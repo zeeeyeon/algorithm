@@ -1,19 +1,36 @@
-# 숫자 체계가 우리와 다른 어느 행성이 있다. 아래는 이 행성에서 사용하는 0 ~ 9의 값을 순서대로 나타낸 것이다.
-#
-# "ZRO", "ONE", "TWO", "THR", "FOR", "FIV", "SIX", "SVN", "EGT", "NIN"
-#
-# 0 ~ 9 의 값을 나타내는 단어가 섞여 있는 문자열을 받아 작은 수부터 차례로 정렬하여 출력하는 프로그램을 작성하라.
-#
-# 예를 들어 입력 문자열이 "TWO NIN TWO TWO FIV FOR" 일 경우 정렬한 문자열은 "TWO TWO TWO FOR FIV NIN" 이 된다.
-#
-# [입력]
-#
-# 입력 파일의 첫 번째 줄에는 테스트 케이스의 개수가 주어진다.
-#
-# 그 다음 줄에 #기호와 함께 테스트 케이스의 번호가 주어지고 공백 문자 후 테스트 케이스의 길이가 주어진다.
-#
-# 테스트 케이스의 길이란, 문자열의 글자수가 아닌 단어의 갯수를 말한다.
-#
-# 그 다음 줄부터 바로 테스트 케이스가 주어진다. 단어와 단어 사이는 하나의 공백으로 구분하며, 문자열의 길이 N은 100≤N≤10000이다.
 import sys
-sys.stdin = open('input.txt')
+sys.stdin = open('GNS_test_input.txt')
+
+T = int(input())
+
+numbers = ["ZRO", "ONE", "TWO", "THR", "FOR", "FIV", "SIX", "SVN", "EGT", "NIN"]
+str_to_numbers = {"ZRO": 0, "ONE": 1, "TWO": 2, "THR": 3, "FOR": 4, "FIV": 5, "SIX": 6, "SVN": 7, "EGT": 8, "NIN": 9}
+
+for case in range(1, T + 1):
+    tc, words_length = input().split()
+    words = input().split()
+    length = len(numbers)
+
+    # 카운팅 정렬 사용 (numbers 길이의 배열 생성 - 각 글자 갯수를 카운팅하기 위함)
+    arr = [0] * length
+
+    # input 요소들 하나씩 꺼내며 카운팅, arr 배열의 인덱스 번호를 이용 카운팅
+    for word in words:
+        arr[str_to_numbers[word]] += 1
+
+    # arr = [700, 716, 719, 734, 679, 737, 674, 654, 724, 704]
+    # numbers[index] * (벨류값 == 반복 횟수)
+    new_list = []
+    for index, value in enumerate(arr):
+        new_list.extend([numbers[index]] * value)
+
+    result = ' '.join(new_list)
+    print(result)
+
+
+
+
+
+
+
+
