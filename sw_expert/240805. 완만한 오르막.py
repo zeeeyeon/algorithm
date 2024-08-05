@@ -22,6 +22,7 @@ for case in range(1, T + 1):
 
     new_list = []
     for inner in up_list:
+        # 리스트의 첫번째 요소는 제일 작은 값, 마지막은 제일 큰 값.
         min_v = min(inner)
         max_v = max(inner)
         if len(inner) == 1: continue
@@ -30,7 +31,6 @@ for case in range(1, T + 1):
         new_list.append([length, avg])
 
     sorted_list = sorted(new_list, key=lambda x: (x[1], -x[0]))
-    print(sorted_list)
 
     if len(sorted_list) == 0: result = 0
     else : result = sorted_list[0][0]
