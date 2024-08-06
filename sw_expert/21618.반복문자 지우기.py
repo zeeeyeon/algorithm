@@ -10,7 +10,7 @@
 # #     peek(s)
 #
 # def check(s):
-#
+;#
 #     stack = []
 #
 #     for char in s:
