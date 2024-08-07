@@ -1,24 +1,22 @@
 import math
 
 def solution(progresses, speeds):
-    time = []
-    for i in range(len(progresses)):
-        time.append(math.ceil(100 - progresses[i]) // speeds[i])
+    time = [math.ceil((100-progresses[i]) / speeds[i]) for i in range(len(progresses))]
 
-    print(time)
-    answer = []
     count = 1
-    for i in range(1, len(time)):
-        if time[i-1] < time[i]:
-            answer.append(count)
-            count = 1
-        else :
-            count += 1
-    answer.append(count)
-    return answer
+    # 변수에 넣어주기 ! (선형적으로 움직이기때문)
+    current_time = time[0]
+    result = []
 
-    print(solution([93, 30, 55], [1, 30, 5]))
-    print(solution([95, 90, 99, 99, 80, 99], [1, 1, 1, 1, 1, 1]))
+    for i in range(1, len(time)):
+        if current_time < time[i]:
+            result.append(count)
+            count = 1
+            current_time = time[i]
+        else:
+            count += 1
+    result.append(count)
+    return result
 
 # def solution(progresses, speeds):
 #     answer = []
