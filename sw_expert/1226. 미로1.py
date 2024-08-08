@@ -1,10 +1,10 @@
 def dfs(x, y, visited):
-    # global result
+    global result
 
     # 도착지점에 닿으면 끝
-    if maze[x][y] == END:
-        # result = 1
-        return 1
+    if maze[11][11] == END:
+        result = 1
+        return
 
     # 도착한 길 표시하기
     visited[x][y] = False
@@ -21,27 +21,22 @@ def dfs(x, y, visited):
         # 방문했던 곳인지 확인
         if not visited[nx][ny]: continue
 
-        if dfs(nx, ny, visited): return 1
+        dfs(nx, ny, visited)
 
-    return 0
+    return result
 
-
-T = int(input())
+T = 10
 dxy = [[0, 1], [1, 0], [0, -1], [-1, 0]]
 
 for case in range(1, T+1):
-    N = int(input())
+    N = 16
+    case = int(input())
     maze = [list(map(int, input())) for _ in range(N)]
 
     visited = [[True] * N for _ in range(N)]
 
     WALL, START, END = 1, 2, 3
-    x, y, result = 0, 0, 0
-
-    for i in range(N):
-        for j in range(N):
-            if maze[i][j] == 2:
-                x, y = i, j
+    x, y, result = 1, 1, 0
 
     # 출발지에서 갈 수 있는 길 검색
     visited[x][y] = False
