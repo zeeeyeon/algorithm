@@ -8,12 +8,36 @@
 5. 남은 연산자 모두 결과에 추가
 '''
 
-T = int(input())
-for case in range(1, T+1):
-    formula= list(map(str, input()))
+
+def infix(formula):
+    op_dict = {'+': 1, '-': 1, '*': 2, '/': 2, '(': 0}
     stack = []
+    result = []
 
-    
+    for i in formula:
+        if i.isdigit():
+            result.append(i)
+        elif i == '(':
+            stack.append(i)
+        elif i == ')':
+            top = stack.pop()
+            while top != '(':
+                result.append(top)
+                top = stack.pop()
+        else:
+            while stack and op_dict[stack[-1]] >= op_dict[i]:
+                result.append(stack.pop())
+            stack.append(i)
+
+    while stack:
+        result.append(stack.pop())
+
+    return ''.join(result)
 
 
+T = int(input())
+for case in range(1, T + 1):
+    formula = list(map(str, input().strip()))
 
+    numbers = infix(formula)
+    print(f'#{case} {numbers}')
