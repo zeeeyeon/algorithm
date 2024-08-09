@@ -15,11 +15,12 @@ def find_subsets(start, current_subset, current_sum):
         # 현재 수를 선택한 경우
         current_subset.append(num)
         find_subsets(i + 1, current_subset, current_sum + num)
+        print(current_subset)
         # 현재 수를 제외하고, 다른 수를 선택한 경우
         current_subset.pop()
 
 
-nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+nums = [1, 2, 3, 4, 5]
 target_sum = 10
 result = []
 
