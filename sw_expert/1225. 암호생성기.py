@@ -2,11 +2,10 @@ for case in range(1, 11):
     test_case = int(input())
     numbers = list(map(int, input().split()))
 
-    flag = True
     count = 1
-    while flag:
+    while numbers[-1] > 0:
         for i in range(len(numbers)):
-            if count == 6: count = 1
+            if count > 6: count = 1
             numbers[0] -= count
             count += 1
 
