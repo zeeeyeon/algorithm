@@ -36,7 +36,7 @@ for case in range(1, T+1):
         if not data[0][y]: continue
 
         # 길탐색 시작
-        total = search_data(0,y)
+        total = search_data(0, y)
         total_list.append([total, y])
         a = sorted(total_list, key=lambda x:(x[0], -x[1]))
 

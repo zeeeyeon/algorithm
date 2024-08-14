@@ -13,4 +13,28 @@ for case in range(1, T + 1):
                     sum_v += data[x][y]
             if max_v < sum_v: max_v = sum_v
     print(f'#{case} {max_v}')
+#
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
