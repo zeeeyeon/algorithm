@@ -13,6 +13,7 @@ def check(x, y, arr, dx, dy, color):
             break
         points.append((nx, ny))
 
+
 for case in range(1, int(input()) + 1):
     N, M = map(int, input().split())
     arr = [[0] * N for _ in range(N)]

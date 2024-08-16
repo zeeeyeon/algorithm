@@ -12,5 +12,3 @@ one, two = find_person(height, two_person)
 for i in sorted(height):
     if i != one and i != two:
         print(i)
-
-

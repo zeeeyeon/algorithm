@@ -9,6 +9,3 @@ for i in range(students):
 
 for i in order:
     print(i, end=' ')
-
-
-
