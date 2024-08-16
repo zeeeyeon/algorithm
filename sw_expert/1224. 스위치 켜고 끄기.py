@@ -21,7 +21,7 @@ def female(states, number):
             states[number - count] = 1 - states[number - count]
             states[number + count] = 1 - states[number + count]
             count += 1
-        else : break
+        else: break
 
     return states
 
