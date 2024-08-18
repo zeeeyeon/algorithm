@@ -1,24 +1,29 @@
 import sys
 sys.stdin = open('input.txt')
+dxy = [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 0], [0, 1], [1, -1], [1, 0], [1, 1]]
 
 def check():
-    for number in arr:
-        if len(set(number)) != N:
-            return 0
+    for i in arr:
+        if len(set(i)) != N: return 0
 
     arr_reverse = list(zip(*arr))
-    for number in arr_reverse:
-        if len(set(number)) != N:
-            return 0
+    for i in arr_reverse:
+        if len(set(i)) != N: return 0
 
-    for i in range(0, N, 3):
-        for j in range(0, N, 3):
-            number_list = arr[i][j:j+3] + arr[i+1][j:j+3] + arr[i+2][j:j+3]
-            if len(set(number_list)) != N:
-                return 0
+    rotate_list = [1, 4, 7]
+
+    for i in rotate_list:
+        for j in rotate_list:
+            numbers = set()
+            for dx, dy in dxy:
+                nx, ny = i + dx, j + dy
+                numbers.add(arr[nx][ny])
+
+            if len(numbers) != N: return 0
     return 1
 
-for case in range(1, int(input())):
+
+for case in range(1, int(input()) + 1):
     N = 9
     arr = [list(map(int, input().split())) for _ in range(N)]
 
