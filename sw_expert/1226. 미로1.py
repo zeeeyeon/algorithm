@@ -21,7 +21,6 @@ for _ in range(1, 11):
     case = int(input())
     N = 16
     maze = [list(map(int, input())) for _ in range(N)]
-    # maze = list(map(list, zip(*arr)))
 
     LOAD, WALL, START, END = 0, 1, 2, 3
     x, y, result = 0, 0, 0
