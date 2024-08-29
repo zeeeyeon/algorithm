@@ -24,6 +24,8 @@ for C in range(1, int(input()) + 1):
     num_list = ''
     index = new_arr.index(1)
 
+    # index(i)는 왼쪽에서 처음 등장하는 i값 찾기, rfind(i) 오른쪽에서 처음 등장하는 i값 찾기
+
     check_code = [0]
     for i in range(index, index+56):
         num_list += str(new_arr[i])
