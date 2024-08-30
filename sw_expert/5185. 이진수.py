@@ -1,23 +1,31 @@
-# def hex_to_binary(n):
-#     number = ''
-#
-#     # 숫자가 아닌 16진수의 문자가 들어왔을 경우도 처리
-#
-#     if n == 0:
-#         return 0
-#
-#     while n > 0:
-#         remainder = n % 2
-#         number += str(remainder)
-#         n = n // 2
-#
-#     return number
-#
-#
-# for case in range(1, int(input()) + 1):
-#     N, HEX = map(int, input().split())
+dict = {'A': 10, 'B': 11, 'C': 12, 'D': 13, 'E': 14, 'F': 15}
+hex_list = ['A', 'B', 'C', 'D', 'E', 'F']
 
-    # for item in HEX:
-    #     hex_to_binary(item)
+def hex_to_binary(n):
+    number = ''
 
-print(bin(int('47FE', 16)))
+    if n == 0:
+        return 0
+
+    while n > 0:
+        remainder = n % 2
+        number += str(remainder)
+        n = n // 2
+
+    if len(number) < 4:
+        while len(number) != 4:
+            number += '0'
+
+    return number[::-1]
+
+# runtime Error 발생,,,
+for case in range(1, int(input()) + 1):
+    N, HEX = map(str, input().split())
+    result = ''
+
+    for item in HEX:
+        if item in hex_list:
+            item = dict[item]
+        result += hex_to_binary(int(item))
+
+    print(f'#{case} {result}')
