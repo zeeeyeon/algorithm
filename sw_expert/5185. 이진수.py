@@ -19,6 +19,8 @@ def hex_to_binary(n):
 
     return number[::-1]
 
+# runtime error
+# result type => str, n == 0인 경우 리턴값이 0으로 정수였음. (리턴타입이 올바르지 않았음.)
 for case in range(1, int(input()) + 1):
     N, HEX = map(str, input().split())
     result = ''
