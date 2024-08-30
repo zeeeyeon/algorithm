@@ -4,8 +4,9 @@ hex_list = ['A', 'B', 'C', 'D', 'E', 'F']
 def hex_to_binary(n):
     number = ''
 
+    #  0일 경우 0000으로 넣어줘야 함 !
     if n == 0:
-        return 0
+        return '0000'
 
     while n > 0:
         remainder = n % 2
@@ -18,7 +19,6 @@ def hex_to_binary(n):
 
     return number[::-1]
 
-# runtime Error 발생,,,
 for case in range(1, int(input()) + 1):
     N, HEX = map(str, input().split())
     result = ''
