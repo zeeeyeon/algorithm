@@ -18,8 +18,6 @@
 #             if (height_box[-1] - number) == -1
 #
 #
-#
-#
 #             if (height_box[-1] - number) == -1 and len(height_box) < N: break
 #             if (height_box[-1] - number) == 1:
 #
