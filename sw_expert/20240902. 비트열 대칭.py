@@ -17,7 +17,22 @@
 #         result = max(result, total)
 #
 #     print(f'#{T} {result}')
-
-
+#
+#
+arr = [1, 2, 3, 4, 5, 6]
 path = []
+n = 3
 
+total = set()
+
+def run(level, start):
+    if level == n:
+        print(*path)
+        return
+
+    for i in range(start, 7):
+        path.append(i)
+        run(level + 1, i)
+        path.pop()
+
+run(0, 1)

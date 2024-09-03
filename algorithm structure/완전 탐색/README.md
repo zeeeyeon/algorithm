@@ -89,3 +89,104 @@ def recur(level, total):
 
 recur(0, 0)
 ```
+
+# 부분 집합 ✨
+
+> ### 개념
+> - 집합에 포함된 원소들을 선택하는 것
+ 
+> ![img_2.png](img_2.png)
+> - 1. 완전 탐색 (재귀 호출을 이용한 완전 탐색)
+
+```
+arr = ['O', 'X']
+path = []
+name = ['A', 'B', 'C']
+
+def print_name():
+    print('{', end = '')
+    for i in range(3):
+        if path[i] == 'O':
+            print(name[i], end=' ')
+    print('}')
+
+def rum(level):
+    if level == 3:
+        print(path)
+        return
+       
+    for i in range(2):
+        path.append(arr[i])
+        run(level + 1)
+        path.pop()
+
+run(0)
+```
+
+> ![img_3.png](img_3.png)
+> - 2. Binary Counting (2진수 & 비트 연산을 이용)
+
+```
+arr = ['A', 'B', 'C']
+n = len(arr)
+
+def get_sub(tar):
+    for i in range(n):
+        if tar & 0x1:
+            print(arr[i], end='')
+        tar >>= 1
+
+for tar in range(0, 1 << n):
+    print('{')
+    get_sub(tar)
+    print('}')
+```
+
+#  조합 ✨
+
+> ### 개념
+> - 서로 다른 n개의 원소 중에서 r개를 순서 없이 골라낸 것
+> - {A B C} == {A C B}, 조합에서는 동일하다 봄 (순열은 다르다고 봄)
+
+
+> ![img_4.png](img_4.png)
+```
+for i in range(5):
+    # N번을 뽑았다면 
+    for j in range(N+1, 5):
+        # M번을 뽑았다면
+        for k in range(M+1, 5)
+        
+arr = ['a', 'b', 'c', 'd', 'e']
+path = []
+n = 3
+
+def run(level, start):
+    if level == n:
+        print(*path)
+        return
+    
+    for i in range(start, 5):
+         path.append(arr[i])
+         run(level + 1, i + 1)
+         path.pop()
+
+run(0, 0)
+```
+
+
+#  Greedy ✨
+
+> ### 개념
+> - 결정이 필요할 때 가장 좋아보이는 선택지로 결정하는 알고리즘
+> - 완전 탐색이 되지 않을 때 고려해볼만한 기법
+
+> ### 핵심 조건
+> - 탐욕적 선택 조건 : 각 단계의 선택이 이후 선택에 영향을 주지 않는다.
+> - 최적 부분 구조 : 각 단계의 최선의 선택이, 전체 문제의 최선의 해가 된다.
+> - 각 단계의 최적을 구했지만 모든 것이 최적해가 될 수 있는가 ? (반례를 찾아나가는 것이 증명단계)
+
+> - 1. 각 단계에서 최적해를 찾아야 한다.
+> - 2. 단계의 결과들을 합하는 방법을 찾아야 한다.
+> - 3. 각 단계의 합 == 전체 문제의 합이라는 것을 증명해야 한다.
+
