@@ -2,8 +2,6 @@ def search_binary(low, high, target, flag):
     global total
     mid = (low + high) // 2
 
-    if target not in arr: return
-
     if target == arr[mid]:
         total += 1
         return
@@ -26,7 +24,7 @@ for T in range(1, int(input()) + 1):
     arr = sorted(new_arr)
     length = len(target_arr)
 
-    low, high = 0, length - 1
+    low, high = 0, len(arr) - 1
     total = 0
 
     for i in range(length):
