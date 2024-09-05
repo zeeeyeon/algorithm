@@ -60,15 +60,28 @@ for tc in range(1, T + 1):
 
 ```
 arr = [i for i in range(1, 11)]
+target_sum = 10
 visited = []
 
-def dfs(level, sum):
+def dfs(level, sum, index):
 
-if 
-
-
-dfs(0, 0)
-
+    if sum > target_sum:
+        return
+    
+    if sum == target_sum:
+        print(*visited)
+        return
+    
+    for i in range(index, len(arr)):
+        
+        # 가지치기: 이미 사용한 숫자라면 생략
+        if arr[i] in visited: continue 
+    
+        visited.append(i)
+        dfs(level + 1, sum + arr[i], i)
+        visited.pop()
+    
+dfs(0, 0, 0)
 ```
 ---
 ---
