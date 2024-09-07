@@ -91,6 +91,7 @@ for case in range(1, int(input()) + 1):
     '''
     for i in arr:
         result += find_load(i)
+        print(result)
 
 
 
