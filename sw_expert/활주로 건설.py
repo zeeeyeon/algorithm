@@ -89,9 +89,6 @@ for case in range(1, int(input()) + 1):
      3. 근데 3 3 2 2 1 1 은 가능
      4. 3 2 2 2 3 의 경우 (3 2 2 2 2 3은 가능)
     '''
-    for i in arr:
-        result += find_load(i)
-        print(result)
 
 
 
