@@ -1,4 +1,6 @@
 from collections import deque
+import sys
+sys.stdin = open('a.txt')
 
 def search():
     queue = deque()
