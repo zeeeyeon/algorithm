@@ -9,7 +9,7 @@ def dijkstra(start):
     while heap:
         dist, now = heapq.heappop(heap)
 
-        if distance[now  ] < dist: continue
+        if distance[now] < dist: continue
 
         for next in graph[now]:
             next_node = next[0]
