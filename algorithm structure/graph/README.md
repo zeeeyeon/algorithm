@@ -351,3 +351,95 @@ else:
     print(f"원소 {target_x}과 원소 {target_y}는 다른 집합에 속해 있습니다.")
 
 ```
+
+---
+---
+
+# 그래프의 최소 비용 문제(graph 응용)
+
+> ## 최소 비용 신장 트리(MST) 
+>> - 그리디 방식으로 접근(작은 것부터 선택)
+>> - Prim 알고리즘(기준으로 생각)
+>> - Kruskal 알고리즘(가중으로 생각)
+
+> ###  그래프에서 최소 비용 문제
+>> - 모든 정점을 연결하는 간선들의 가중치의 합이 최소가 되는 트리
+>> - 두 정점 사이의 최소 비용 경로 찾기
+
+> ### 신장 트리
+>> - n 개의 정점으로 이루어진 무방향 그래프에서 n개의 정점과 n-1개의 간선으로 이루어진 트리
+>> - 모든 정점을 연결하면서, 간선이 n-1개인 트리(계층적이며 사이클 x)
+
+> ### 최소 신장 트리 (Minimum Spanning Tree)
+>> - 무방향 가중치 그래프에서 신장 트리를 구성하는 간선들의 가중치의 합이 ***최소인*** 신장 트리
+
+
+# Prim 알고리즘
+
+> - 하나의 정점에서 연결된 간선들 중에서 하나씩 선택하면서 MST를 만들어가는 방식
+>> - 임의 정점을 하나 선택해서 시작
+>> - 선택한 정점과 인접하는 정점들 중의 최소 비용의 간선이 존재하는 정점을 선택 (BFS + 최소 비용)
+>> - 모든 정점이 선택될 때까지 앞의 과정을 반복
+
+> - 서로소인 2개의 집합(2 disjoint-sets) 정보를 유지
+>> - 트리 정점(tree vertices) - MST를 만들기 위해 선택된 정점들
+>> - 비트리 정점(nontree vertices) - 선택되지 않은 정점들
+
+> ![img_15.png](img_15.png)
+> ![img_16.png](img_16.png)
+> - 정점으로부터 인접한 정점 중 가장 가중치가 낮은 곳부터 가보자
+
+```
+from heapq import heappush, heappop
+
+def prim(start):
+    heap = list()
+    # visited와 동일
+    MST = [0] * (V)
+
+    # 최소 비용 합계
+    sum_weight = 0
+
+    # 힙에서 관리해야 할 데이터
+    # 가중치, 정점 정보
+    # 시작점은 가중치가 0
+    heappush(heap, (0, start))  # 0을 기준으로 정렬 (가중치가 제일 작은 것부터 정렬)
+
+    while heap:
+        weight, v = heappop(heap)   # 현재 시점에서 가중치가 가장 작은 정점이 pop
+        
+        # 이미 방문한 지점이면 통과
+        if MST[v]:
+            continue
+
+        # 방문 처리
+        MST[v] = 1
+        # 누적합 추가
+        sum_weight += weight
+
+        # 갈 수 있는 노드를 보면서
+        for next in range(V):
+            # 갈 수 없는 지점이면 continue
+            if graph[v][next] == 0:
+                continue
+
+            # 이미 방문한 지점이면 continue
+            if MST[next]:
+                continue
+
+            heappush(heap, (graph[v][next], next))
+
+    return sum_weight
+
+
+V, E = map(int, input().split())
+graph = [[0] * (V) for _ in range(V)]       
+
+for _ in range(E):
+    u, v, w = map(int, input().split())
+    graph[u][v] = w
+    graph[v][u] = w  # 가중치가 있는 무방향 그래프
+
+result = prim(0)
+print(f'최소 비용 = {result}')
+```
