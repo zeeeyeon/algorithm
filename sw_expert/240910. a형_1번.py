@@ -2,6 +2,7 @@ from collections import deque
 import sys
 sys.stdin = open('a.txt')
 
+# 다시 한번 복기하기
 def search():
     queue = deque()
     for i in range(N):
