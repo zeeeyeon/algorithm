@@ -6,6 +6,7 @@ def bfs(ground, x, y):
 
     while queue:
         x, y = queue.popleft()
+        # 여기서 0으로 바꾸지 말기 !
 
         for dx, dy in [[0, 1], [1, 0], [0, -1], [-1, 0]]:
             nx, ny = x + dx, y + dy
