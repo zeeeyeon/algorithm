@@ -31,6 +31,7 @@ for case in range(1, T + 1):
 
     # 도착지점, arr[99][y] y의 값을 먼저 찾기
     for y in range(BLOCK_SIZE):
+        # 2일 경우 탈출
         if arr[99][y] == 2:
             result = search_block(99, y)
 
