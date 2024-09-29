@@ -3,9 +3,12 @@ M = int(input())
 students = list(map(int, input().split()))
 
 rank = []
-student_likes = [0] * 101  # 학생들의 추천 횟수를 저장할 리스트
-student_order = {}  # 학생들이 처음 추천된 순서를 저장할 딕셔너리
-order = 0  # 추천 순서
+# 학생들 추천 횟수를 저장
+student_likes = [0] * 101
+# 학생들 처음 추천된 순서 저장
+student_order = {}
+# 추천 순서
+order = 0
 
 for student in students:
     order += 1
@@ -29,6 +32,6 @@ for student in students:
             rank.append([student, 1, order])
             student_order[student] = order
 
-# 최종 후보 리스트를 학생 번호 순으로 정렬하여 출력
+# 최종 후보 리스트를 학생 번호 순으로 정렬
 rank.sort(key=lambda x: x[0])
 print(' '.join(str(x[0]) for x in rank))
