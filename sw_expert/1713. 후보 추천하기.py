@@ -35,3 +35,4 @@ for student in students:
 # 최종 후보 리스트를 학생 번호 순으로 정렬
 rank.sort(key=lambda x: x[0])
 print(' '.join(str(x[0]) for x in rank))
+
