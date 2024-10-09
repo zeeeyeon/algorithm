@@ -114,6 +114,5 @@ while game_data is not None:
     # output에 담긴 값은 submit 함수를 통해 배틀싸피 메인 프로그램에 전달
     game_data = submit(output)
 
-
 # 반복문을 빠져나왔을 때 배틀싸피 메인 프로그램과의 연결을 완전히 해제하기 위해 close 함수 호출
 close()
