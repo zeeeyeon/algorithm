@@ -109,7 +109,6 @@ while game_data is not None:
     else:
         output = 'R A'
 
-
     # while 문의 끝에는 다음 코드가 필수로 존재하여야 함
     # output에 담긴 값은 submit 함수를 통해 배틀싸피 메인 프로그램에 전달
     game_data = submit(output)
