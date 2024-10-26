@@ -33,7 +33,6 @@ def dfs(s, V):
             else: break
 
 
-
 for case in range(1, T+1):
     # V 정점, E 간선
     V, E = map(int, input().split())
