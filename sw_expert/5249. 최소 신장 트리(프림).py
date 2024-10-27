@@ -23,7 +23,6 @@ def prim(start):
 
     return sum_weight
 
-
 for T in range(1, int(input()) + 1):
     V, E = map(int, input().split())
     graph = [[0] * (V + 1) for _ in range(V + 1)]
