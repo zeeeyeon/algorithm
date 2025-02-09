@@ -165,4 +165,5 @@ def binary_search(low, high, target):
 print(f'9 = {binary_search(0, len(arr) - 1, 9)}')
 print(f'2 = {binary_search(0, len(arr) - 1, 2)}')
 print(f'20 = {binary_search(0, len(arr) - 1, 20)}')
+
 ```
