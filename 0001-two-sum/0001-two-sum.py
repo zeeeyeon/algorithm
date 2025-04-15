@@ -1,10 +1,13 @@
 class Solution(object):
     def twoSum(self, nums, target):
-        length = len(nums)
+        dict = {}
 
-        for i in range(length):
-            for j in range(i+1, length):
-                
-                if nums[i] + nums[j] == target: return [i, j]
-        
+        for i, num in enumerate(nums):
+            number = target - num
+
+            if number in dict:
+                return [dict[number], i]
+
+            dict[num] = i
         return []
+        
